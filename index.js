@@ -5,9 +5,9 @@ const app = express()
 const http = require("http")
 
 // app.use(express.urlencoded({ extended: true }));
-// app.use(bodyParser.urlencoded({ extended: false }))
-// app.use(bodyParser.json())
-// app.use(express.static(__dirname + '/'))
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+app.use(express.static(__dirname + '/'))
 
 const server = http.createServer(app)
 app.set("view engine", "ejs")
