@@ -62,12 +62,10 @@ app.get("/test", async (req, res) => {
     const CyclicDb = require("@cyclic.sh/dynamodb")
     const db = CyclicDb("funny-beret-oxCyclicDB")
     const animals = db.collection("animals")
-    let con1 = await animals.get("con1")
-    let con2 = await animals.get("con2")
-    console.log(con1, con2)
-    const mergedObject = { ...con1, ...con2}
+    let con = await animals.get("con")
+    console.log(con)
     console.log("============")
-    res.send(mergedObject)
+    res.send(con)
 })
 
 app.post("/send", async (req, res) => {
@@ -77,13 +75,11 @@ app.post("/send", async (req, res) => {
         const CyclicDb = require("@cyclic.sh/dynamodb")
         const db = CyclicDb("funny-beret-oxCyclicDB")
         const animals = db.collection("animals")
-        let con1 = await animals.set("con1", {
-            temp: param1,
-            use: 1
-        })
-        let con2 = await animals.set("con2", {
-            temp: param2,
-            use: 0
+        let con = await animals.set("con", {
+            temp1: param1,
+            temp2: param2,
+            use1: 0,
+            use2: 1
         })
 
         console.log("저장됨!")
