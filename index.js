@@ -76,10 +76,10 @@ app.post("/send", async (req, res) => {
             temp: "12",
             use: 1
         })
-        let con2 = await animals.set("con2", {
-            temp: "1221",
-            use: 0
-        })
+        // let con2 = await animals.set("con2", {
+        //     temp: "1221",
+        //     use: 0
+        // })
 
         console.log("저장됨!")
         console.log(req.body)
