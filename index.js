@@ -25,22 +25,26 @@ app.get('/', (req, res) => {
 })
 
 app.get("/test", async (req, res) => {
-    let my_file = await s3.getObject({
-        Bucket: "cyclic-funny-beret-ox-us-west-1",
-        Key: "db.json",
-    }).promise()
-    console.log(JSON.parse(my_file))
+    const CyclicDb = require("@cyclic.sh/dynamodb")
+    const db = CyclicDb("funny-beret-oxCyclicDB")
+    const animals = db.collection("animals")
+    let item = await animals.get("leo")
+    console.log(item)
+
     console.log("============")
-    res.send(JSON.parse(my_file))
+    res.send(item)
 })
 
 app.post("/send", async (req, res) => {
     try {
-        await s3.putObject({
-            Body: JSON.stringify({ param1: req.body.param1, param2: req.body.param2 }),
-            Bucket: "cyclic-funny-beret-ox-us-west-1",
-            Key: "db.json",
-        }).promise()
+        const CyclicDb = require("@cyclic.sh/dynamodb")
+        const db = CyclicDb("funny-beret-oxCyclicDB")
+        const animals = db.collection("animals")
+        let leo = await animals.set("leo", {
+            type: "cat",
+            color: "orange"
+        })
+
         console.log("저장됨!")
         console.log(req.body)
         // console.log(req.body.param1)
