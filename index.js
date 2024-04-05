@@ -72,10 +72,10 @@ app.post("/send", async (req, res) => {
         const CyclicDb = require("@cyclic.sh/dynamodb")
         const db = CyclicDb("funny-beret-oxCyclicDB")
         const animals = db.collection("animals")
-        let con1 = await animals.set("con1", {
-            temp: "12",
-            use: 1
-        })
+        // let con1 = await animals.set("con1", {
+        //     temp: "12",
+        //     use: 1
+        // })
         // let con2 = await animals.set("con2", {
         //     temp: "1221",
         //     use: 0
