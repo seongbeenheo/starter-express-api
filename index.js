@@ -26,11 +26,11 @@ app.get('/', (req, res) => {
 
 app.post("/send", async (req, res) => {
     try {
-        // await s3.putObject({
-        //     Body: JSON.stringify({ param1: req.body.param1, param2: req.body.param2 }),
-        //     Bucket: "cyclic-funny-beret-ox-us-west-1",
-        //     Key: "db.json",
-        // }).promise()
+        await s3.putObject({
+            Body: JSON.stringify({ param1: req.body.param1, param2: req.body.param2 }),
+            Bucket: "cyclic-funny-beret-ox-us-west-1",
+            Key: "db.json",
+        }).promise()
         console.log("저장됨!")
         // console.log(req.body)
         // console.log(req.body.param1)
