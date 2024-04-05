@@ -72,21 +72,21 @@ app.get("/test", async (req, res) => {
 
 app.post("/send", async (req, res) => {
     try {
-        // const CyclicDb = require("@cyclic.sh/dynamodb")
-        // const db = CyclicDb("funny-beret-oxCyclicDB")
-        // const animals = db.collection("animals")
-        // let con1 = await animals.set("con1", {
-        //     temp: "12",
-        //     use: 1
-        // })
-        // let con2 = await animals.set("con2", {
-        //     temp: "1221",
-        //     use: 0
-        // })
+        const { param1, param2 } = req.body;
+
+        const CyclicDb = require("@cyclic.sh/dynamodb")
+        const db = CyclicDb("funny-beret-oxCyclicDB")
+        const animals = db.collection("animals")
+        let con1 = await animals.set("con1", {
+            temp: "12",
+            use: 1
+        })
+        let con2 = await animals.set("con2", {
+            temp: "1221",
+            use: 0
+        })
 
         console.log("저장됨!")
-        // const { param1, param2 } = req.body;
-        console.log(req.body.param1)
         console.log("=======?====")
         res.status(200).send(req.body)
     } catch (error) {
