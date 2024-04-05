@@ -79,7 +79,7 @@ app.get("/test", async (req, res) => {
 
 app.post("/send", async (req, res) => {
     try {
-        const { param1, param2 } = req.body;
+        const { param1=10, param2=20, param3=30 } = req.body;
 
         const CyclicDb = require("@cyclic.sh/dynamodb")
         const db = CyclicDb("funny-beret-oxCyclicDB")
