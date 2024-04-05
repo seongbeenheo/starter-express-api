@@ -67,7 +67,7 @@ app.get("/test", async (req, res) => {
     console.log(con1, con2)
     const mergedObject = { ...con1, ...con2}
     console.log("============")
-    res.send()
+    res.send(mergedObject)
 })
 
 app.post("/send", async (req, res) => {
