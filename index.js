@@ -50,12 +50,14 @@ app.get('/', async (req, res) => {
     console.log(con)
 
     const time1 = timeToString(con.props.updated)
-    const { temp1, temp2 } = con.props
+    const { temp1, temp2, use1, use2 } = con.props
 
     res.render("test1", {
         param1: temp1,
         param2: temp2,
-        time1
+        time1,
+        use1,
+        use2
     })
 })
 
