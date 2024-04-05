@@ -82,7 +82,7 @@ app.post("/send", async (req, res) => {
         // })
         
         console.log("저장됨!")
-        // console.log(`${req.body.param1}`)
+        const { param1, param2 } = req.body;
         console.log("=======?====")
         res.status(200).send(req.body)
     } catch (error) {
