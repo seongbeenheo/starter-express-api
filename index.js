@@ -24,6 +24,16 @@ app.get('/', (req, res) => {
     })
 })
 
+app.get("/test", async (req, res) => {
+    let my_file = await s3.getObject({
+        Bucket: "cyclic-funny-beret-ox-us-west-1",
+        Key: "db.json",
+    }).promise()
+    console.log(JSON.parse(my_file))
+    console.log("============")
+    res.send(JSON.parse(my_file))
+})
+
 app.post("/send", async (req, res) => {
     try {
         await s3.putObject({
@@ -32,7 +42,7 @@ app.post("/send", async (req, res) => {
             Key: "db.json",
         }).promise()
         console.log("저장됨!")
-        // console.log(req.body)
+        console.log(req.body)
         // console.log(req.body.param1)
         console.log("=======")
         res.status(200).send(req.body)
