@@ -80,9 +80,9 @@ app.post("/send", async (req, res) => {
         //     temp: "1221",
         //     use: 0
         // })
-
+        
         console.log("저장됨!")
-        console.log(req.body)
+        console.log(`${req.body.param1}`)
         console.log("=======?====")
         res.status(200).send(req.body)
     } catch (error) {
