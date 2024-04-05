@@ -11,6 +11,9 @@ const s3 = new AWS.S3()
 // app.use(bodyParser.urlencoded({ extended: false }))
 // app.use(bodyParser.json())
 // app.use(express.static(__dirname + '/'))
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 
 function timeToString(t) {
     const isoDateString = t; // 변환할 ISO 8601 형식의 날짜와 시간
@@ -80,10 +83,9 @@ app.post("/send", async (req, res) => {
         //     temp: "1221",
         //     use: 0
         // })
-        
+
         console.log("저장됨!")
         const { param1, param2 } = req.body;
-        console.log(param1)
         console.log("=======?====")
         res.status(200).send(req.body)
     } catch (error) {
