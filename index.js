@@ -84,7 +84,7 @@ app.post("/send", async (req, res) => {
         console.log("저장됨!")
         console.log(req.body)
         // console.log(req.body.param1)
-        console.log("=======")
+        console.log("===========")
         res.status(200).send(req.body)
     } catch (error) {
         res.status(404).send(error)
