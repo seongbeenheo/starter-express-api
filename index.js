@@ -87,8 +87,10 @@ app.post("/send", async (req, res) => {
         let con = await animals.set("con", {
             temp1: param1,
             temp2: param2,
+            temp3: param3,
             use1: 0,
-            use2: 1
+            use2: 1,
+            use3: 0
         })
 
         console.log("저장됨!")
