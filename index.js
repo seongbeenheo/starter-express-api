@@ -46,14 +46,15 @@ app.get('/', async (req, res) => {
     const CyclicDb = require("@cyclic.sh/dynamodb")
     const db = CyclicDb("funny-beret-oxCyclicDB")
     const animals = db.collection("animals")
-    let item = await animals.get("leo")
-    console.log(item)
+    let con = await animals.get("con")
+    console.log(con)
 
-    const time1 = timeToString(item.props.updated)
+    const time1 = timeToString(con.props.updated)
+    const { param1, param2 } = con.props
 
     res.render("test1", {
-        param1: "11",
-        param2: "1222",
+        param1,
+        param2,
         time1
     })
 })
