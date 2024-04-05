@@ -39,6 +39,33 @@
             margin-bottom: 30px;
         }
 
+        .use {
+            display: flex;
+            align-items: center;
+        }
+
+        .status-label {
+            display: inline-block;
+            margin-right: 10px;
+            font-size: 16px;
+        }
+
+        .status-dot {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        .status-dot.red {
+            background-color: red;
+        }
+
+        .status-dot.green {
+            background-color: green;
+        }
+
         .one {}
 
         .two {}
@@ -61,10 +88,17 @@
             justify-content: center;
             align-items: center;
         }
+
         .wrapper {
             margin-top: 8px;
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .label {
+            width: 10px;
+            height: 10px;
+            background-color: tomato;
         }
     </style>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -72,18 +106,58 @@
 
 <body>
     <div class="container">
-        <h1 class="text-3xl font-bold main_title">스마트 플러그 상태 GUI</h1>
+        <h1 class="text-3xl font-bold">스마트 플러그 상태 GUI</h1>
+        <h3 class="main_title">새로운 데이터를 조회하려면 새로고침을 해주세요!</h3>
         <div class="box">
             <div class="shadow-md item one">
                 <h1>[ 첫 번째 콘센트 ]</h1>
                 <div class="wrapper">
-                    <div class="temp">온도: <%= param1%></div>
-                    <div class="use">사용 중 <%= param2%></div>
-                    <div class="use_time">사용 시작 시간: <%= time%></div>
+                    <div class="temp">온도: <%= param1%>°C</div>
+                    <div class="use">
+                        <span class="status-label">플러그 사용 여부</span>
+                        <% if (param1==11) { %>
+                            <span class="status-dot red"></span>
+                            <% } else { %>
+                                <span class="status-dot green"></span>
+                                <% } %>
+                    </div>
+                    <div class="use_time">최종 사용 시작 시간: <%= time1%>
+                    </div>
                 </div>
             </div>
-            <div class="shadow-md item two"></div>
-            <div class="shadow-md item three"></div>
+            <div class="shadow-md item two">
+                <h1>[ 두 번째 콘센트 ]</h1>
+                <div class="wrapper">
+                    <div class="temp">온도: <%= param1%>°C</div>
+                    <div class="use">
+                        <span class="status-label">플러그 사용 여부</span>
+                        <% if (param1==11) { %>
+                            <span class="status-dot red"></span>
+                            <% } else { %>
+                                <span class="status-dot green"></span>
+                                <% } %>
+                    </div>
+                    <div class="use_time">최종 사용 시작 시간: <%= time1%>
+                    </div>
+                </div>
+            </div>
+            <div class="shadow-md item three">
+                <h1>[ 세 번째 콘센트 ]</h1>
+                <div class="wrapper">
+                    <div class="temp">온도: <%= param1%>°C</div>
+                    <div class="use">
+                        <span class="status-label">플러그 사용 여부</span>
+                        <% if (param1==11) { %>
+                            <span class="status-dot red"></span>
+                            <% } else { %>
+                                <span class="status-dot green"></span>
+                                <% } %>
+                    </div>
+                    <div class="use_time">최종 사용 시작 시간: <%= time1%>
+                    </div>
+                    <%= time1 %>
+                </div>
+            </div>
         </div>
     </div>
 </body>

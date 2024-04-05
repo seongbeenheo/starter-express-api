@@ -39,12 +39,19 @@ app.set("view engine", "ejs")
 app.set("views", "./views")
 
 
-app.get('/', (req, res) => {
-    const time = timeToString("2024-04-05T01:59:47.624Z")
+app.get('/', async (req, res) => {
+    const CyclicDb = require("@cyclic.sh/dynamodb")
+    const db = CyclicDb("funny-beret-oxCyclicDB")
+    const animals = db.collection("animals")
+    let item = await animals.get("leo")
+    console.log(item)
+
+    const time1 = timeToString(item.props.updated)
+
     res.render("test1", {
         param1: "11",
         param2: "1222",
-        time: time
+        time1
     })
 })
 
@@ -52,11 +59,12 @@ app.get("/test", async (req, res) => {
     const CyclicDb = require("@cyclic.sh/dynamodb")
     const db = CyclicDb("funny-beret-oxCyclicDB")
     const animals = db.collection("animals")
-    let item = await animals.get("leo")
-    console.log(item)
+    let con1 = await animals.get("con1")
+    let con2 = await animals.get("con2")
+    console.log(con1, con2)
 
     console.log("============")
-    res.send(item)
+    res.send(con1, con2)
 })
 
 app.post("/send", async (req, res) => {
@@ -64,14 +72,18 @@ app.post("/send", async (req, res) => {
         const CyclicDb = require("@cyclic.sh/dynamodb")
         const db = CyclicDb("funny-beret-oxCyclicDB")
         const animals = db.collection("animals")
-        let leo = await animals.set("leo", {
-            type: "cat",
-            color: "orange"
+        let con1 = await animals.set("con1", {
+            temp: "12",
+            use: 1
+        })
+        let con2 = await animals.set("con2", {
+            temp: "1221",
+            use: 0
         })
 
         console.log("저장됨!")
         console.log(req.body)
-        // console.log(req.body.param1)
+        console.log(req.body.param1)
         console.log("=======")
         res.status(200).send(req.body)
     } catch (error) {
