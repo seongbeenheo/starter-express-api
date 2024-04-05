@@ -32,8 +32,8 @@ app.post("/send", async (req, res) => {
         //     Key: "db.json",
         // }).promise()
         console.log("저장됨!")
-        console.log(req.body)
-        console.log(req.body.param1)
+        // console.log(req.body)
+        // console.log(req.body.param1)
         console.log("=======")
         res.status(200).send(req.body)
     } catch (error) {
