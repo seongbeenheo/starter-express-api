@@ -67,7 +67,7 @@ app.get("/test", async (req, res) => {
     console.log(con1, con2)
 
     console.log("============")
-    res.send(con1, con2)
+    res.send(con1 + con2)
 })
 
 app.post("/send", async (req, res) => {
@@ -78,11 +78,11 @@ app.post("/send", async (req, res) => {
         const db = CyclicDb("funny-beret-oxCyclicDB")
         const animals = db.collection("animals")
         let con1 = await animals.set("con1", {
-            temp: "12",
+            temp: param1,
             use: 1
         })
         let con2 = await animals.set("con2", {
-            temp: "1221",
+            temp: param2,
             use: 0
         })
 
