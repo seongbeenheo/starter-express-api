@@ -65,9 +65,9 @@ app.get("/test", async (req, res) => {
     let con1 = await animals.get("con1")
     let con2 = await animals.get("con2")
     console.log(con1, con2)
-
+    const mergedObject = { ...con1, ...con2}
     console.log("============")
-    res.send(con1 + con2)
+    res.send()
 })
 
 app.post("/send", async (req, res) => {
